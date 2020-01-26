@@ -1,3 +1,5 @@
+<?hh // strict
+
 namespace Lexidor\FBInterceptPolyfill\TestSubjects;
 
 final class GlobalState {

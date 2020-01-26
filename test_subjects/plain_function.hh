@@ -1,5 +1,7 @@
+<?hh // strict
+
 namespace Lexidor\FBInterceptPolyfill\TestSubjects;
 
-function variadic_function(mixed $required, mixed ...$rest): void {
+function plain_function(): void {
   GlobalState::$last_called_function = __FUNCTION__;
 }

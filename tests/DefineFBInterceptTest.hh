@@ -1,3 +1,5 @@
+<?hh // strict
+
 namespace Lexidor\FBInterceptPolyfill\Tests;
 
 use type HH\Lib\Ref;

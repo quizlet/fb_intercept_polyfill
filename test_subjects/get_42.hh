@@ -1,5 +1,8 @@
+<?hh // strict
+
 namespace Lexidor\FBInterceptPolyfill\TestSubjects;
 
-function takes_three_arguments(int $one, string $two, \Exception $three): void {
+function get_42(): int {
   GlobalState::$last_called_function = __FUNCTION__;
+  return 42;
 }
