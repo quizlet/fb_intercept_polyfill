@@ -1,0 +1,13 @@
+{
+    "name": "lexidor/fb_intercept_polyfill",
+    "description": "A polyfill for using fb_intercept across hhvm 3.24 -> 4.present",
+    "require": {
+        "hhvm": ">3.24 <4.25",
+        "hhvm/hhvm-autoload": "^1|^2",
+        "hhvm/hsl": ">1.6 <5"
+    },
+    "require-dev": {
+        "hhvm/hacktest": "^1|^2",
+        "facebook/fbexpect": "^1|^2"
+    }
+}
