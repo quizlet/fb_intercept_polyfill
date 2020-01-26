@@ -12,7 +12,7 @@ php --version
 
 use_hhvm_for_composer = "$(hhvm use_hhvm_for_composer.hh)"
 
-if $use_hhvm_for_composer
+if use_hhvm_for_composer
 then
   hhvm /usr/local/bin/composer install
 else
