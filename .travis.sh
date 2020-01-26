@@ -11,6 +11,7 @@ php --version
 )
 
 if $HHVM_VERSION == "HHVM_VERSION=4"
+then
   composer install
 else
   hhvm /usr/local/bin/composer
