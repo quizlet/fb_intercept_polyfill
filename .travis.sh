@@ -10,9 +10,7 @@ php --version
   curl https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 )
 
-use_hhvm_for_composer = "$(hhvm use_hhvm_for_composer.hh)"
-
-if use_hhvm_for_composer
+if "$(hhvm use_hhvm_for_composer.hh)"
 then
   hhvm /usr/local/bin/composer install
 else
