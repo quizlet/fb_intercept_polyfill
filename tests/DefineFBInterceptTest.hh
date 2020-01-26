@@ -3,7 +3,7 @@
 namespace Lexidor\FBInterceptPolyfill\Tests;
 
 use type HH\Lib\Ref;
-use namespace HH\Lib\Str;
+use namespace HH\Lib\{C, Str};
 use type Facebook\HackTest\{DataProvider, HackTest};
 use function Facebook\FBExpect\expect;
 use namespace Lexidor\FBInterceptPolyfill\TestSubjects;
@@ -58,9 +58,11 @@ class DefineFBInterceptTest extends HackTest {
   public function test_the_default_value_of_done_is_false(): void {
     self::fbInterceptRequireSuccess(
       self::PLAIN_FUNCTION,
-      /*HH_FIXME[2087] Reference use*/
-      (mixed $_, mixed $_, mixed $_, mixed $_, bool &$done) ==>
-        invariant($done, 'Done should be true, got: %s', \print_r($done)),
+      (mixed $_, mixed $_, mixed $_, mixed $_, Ref<bool> $done) ==> invariant(
+        $done->value,
+        'Done should be true, got: %s',
+        \print_r($done),
+      ),
     );
   }
 
@@ -208,7 +210,7 @@ class DefineFBInterceptTest extends HackTest {
   public function test_passing_a_handler_with_an_too_many_arguments_is_a_successful_case(
   ): void {
     /*HH_FIXME[2087] Reference use*/
-    expect(self::fbIntercept(self::PLAIN_FUNCTION, (mixed $_, mixed $_, mixed $_, mixed $_, mixed &$_, mixed $_) ==> false))->toBeTrue();
+    expect(self::fbIntercept(self::PLAIN_FUNCTION, (mixed $_, mixed $_, mixed $_, mixed $_, mixed $_, mixed $_) ==> false))->toBeTrue();
   }
 
   /**
@@ -448,12 +450,6 @@ EOF
 
     expect(() ==> TestSubjects\throw_an_exception())->notToThrow();
 
-    self::fbInterceptRequireSuccess(self::THROW_AN_EXCEPTION, false);
-
-    expect(() ==> TestSubjects\throw_an_exception())->toThrow(
-      \Exception::class,
-      self::THROW_AN_EXCEPTION,
-    );
     self::fbInterceptRequireSuccess(
       self::THROW_AN_EXCEPTION,
       self::getFalseHandlerWithDoneAsTrue(),
@@ -520,28 +516,28 @@ EOF
 
   private static function getEchoingHandlerWithDoneAsTrue(
     mixed $output,
-  ): (function(string, mixed, varray<mixed>, mixed, bool): mixed) {
+  ): (function(string, mixed, varray<mixed>, mixed, Ref<bool>): mixed) {
     /*HH_FIXME[2087] Reference use*/
-    return ($name, $obj, $params, $data, &$done) ==> {
-      $done = true;
+    return ($name, $obj, $params, $data, $done) ==> {
+      $done->value = true;
       return $output;
     };
   }
 
   private static function getFalseHandlerWithDoneAsTrue(
-  ): (function(string, mixed, varray<mixed>, mixed, bool): bool) {
+  ): (function(string, mixed, varray<mixed>, mixed, Ref<bool>): bool) {
     /*HH_FIXME[2087] Reference use*/
-    return ($name, $obj, $params, $data, &$done) ==> {
-      $done = true;
+    return ($name, $obj, $params, $data, $done) ==> {
+      $done->value = true;
       return false;
     };
   }
 
   private static function getFalseHandlerWithDoneAsFalse(
-  ): (function(string, mixed, varray<mixed>, mixed, bool): bool) {
+  ): (function(string, mixed, varray<mixed>, mixed, Ref<bool>): bool) {
     /*HH_FIXME[2087] Reference use*/
-    return ($name, $obj, $params, $data, &$done) ==> {
-      $done = false;
+    return ($name, $obj, $params, $data, $done) ==> {
+      $done->value = false;
       return false;
     };
   }
@@ -551,9 +547,40 @@ EOF
     mixed $handler,
     mixed $data = null,
   ): bool {
-    /*HH_IGNORE_ERROR[2049]*/
-    /*HH_IGNORE_ERROR[4107]*/
-    return \fb_intercept($name, $handler, $data);
+    if ($handler === null) {
+      return FBInterceptPolyfill\fb_intercept_full($name, null);
+    }
+    if (!\is_callable($handler)) {
+      /*HH_IGNORE_ERROR[4110] This is meant to fail silently*/
+      return FBInterceptPolyfill\fb_intercept_full($name, $handler);
+    }
+    $reflector = new \ReflectionFunction($handler);
+    switch (C\count($reflector->getParameters())) {
+      case 0:
+        /*HH_IGNORE_ERROR[4110] Dynamically verified*/
+        return FBInterceptPolyfill\fb_intercept_zero($name, $handler, $data);
+        break;
+      case 1:
+        /*HH_IGNORE_ERROR[4110] Dynamically verified*/
+        return FBInterceptPolyfill\fb_intercept_one($name, $handler, $data);
+        break;
+      case 2:
+        /*HH_IGNORE_ERROR[4110] Dynamically verified*/
+        return FBInterceptPolyfill\fb_intercept_two($name, $handler, $data);
+        break;
+      case 3:
+        /*HH_IGNORE_ERROR[4110] Dynamically verified*/
+        return FBInterceptPolyfill\fb_intercept_three($name, $handler, $data);
+        break;
+      case 4:
+        /*HH_IGNORE_ERROR[4110] Dynamically verified*/
+        return FBInterceptPolyfill\fb_intercept_four($name, $handler, $data);
+        break;
+      default: //five or more
+        /*HH_IGNORE_ERROR[4110] Dynamically verified*/
+        return FBInterceptPolyfill\fb_intercept_full($name, $handler, $data);
+        break;
+    }
   }
 
   private static function fbInterceptRequireSuccess(
@@ -562,9 +589,7 @@ EOF
     mixed $data = null,
   ): bool {
     invariant(
-      /*HH_IGNORE_ERROR[2049]*/
-      /*HH_IGNORE_ERROR[4107]*/
-      \fb_intercept($name, $handler, $data),
+      self::fbIntercept($name, $handler, $data),
       'fb_intercept did not register',
     );
     return true;
