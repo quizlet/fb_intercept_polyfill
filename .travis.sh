@@ -11,8 +11,7 @@ php --version
 )
 
 runtime=$(hhvm --php -r "HHVM_VERSION < 40000 ? 'php' : 'hhvm';")
-if [ "$runtime" = "hhvm"]
-then
+if [ "$runtime" = "hhvm"]; then
   hhvm /usr/local/bin/composer install
 else
   composer install
