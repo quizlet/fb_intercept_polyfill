@@ -28,6 +28,7 @@ if [ "$runtime" = "hhvm" ]; then
     hhvm /usr/local/bin/composer install
   fi
 else
+    # Implicitly uses php
     composer install
 fi
 
