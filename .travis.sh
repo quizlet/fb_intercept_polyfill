@@ -21,7 +21,10 @@ runtime=$(hhvm --php -r "echo HHVM_VERSION_ID >= 40000 ? 'php' : 'hhvm';")
 if [ "$runtime" = "hhvm" ]; then
   removetestfiles=$(hhvm --php -r "echo HHVM_VERSION_ID < 32800 ? 'yes' : 'no';")
   if [ "$removetestfiles" = "yes" ]; then
+    # The tests won't typecheck and work, so I remove them.
     rm -r tests
+    # hhvm-autoload needs to have a directory here, but it can be empty.
+    mkdir tests
     # We can't install hacktest
     rm composer.json
     mv composer.old.json composer.json
