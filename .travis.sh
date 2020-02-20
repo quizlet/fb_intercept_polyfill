@@ -23,10 +23,10 @@ if [ "$runtime" = "hhvm" ]; then
   if [ "$removetestfiles" = "yes" ]; then
     rm -r tests
     # We can't install hacktest
-    hhvm /usr/local/bin/composer install --no-dev
-  else
-    hhvm /usr/local/bin/composer install
+    rm composer.json
+    mv composer.old.json composer.json
   fi
+  hhvm /usr/local/bin/composer install
 else
     # Implicitly uses php
     composer install
