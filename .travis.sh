@@ -17,7 +17,7 @@ else
   rm src/fb_intercept.hh
 fi
 
-runtime=$(hhvm --php -r "HHVM_VERSION < 40000 ? 'php' : 'hhvm';")
+runtime=$(hhvm --php -r "echo HHVM_VERSION_ID >= 40000 ? 'php' : 'hhvm';")
 if [ "$runtime" = "hhvm" ]; then
   hhvm /usr/local/bin/composer install
 else
