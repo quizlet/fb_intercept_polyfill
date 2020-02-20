@@ -21,9 +21,16 @@ runtime=$(hhvm --php -r "echo HHVM_VERSION_ID >= 40000 ? 'php' : 'hhvm';")
 if [ "$runtime" = "hhvm" ]; then
   hhvm /usr/local/bin/composer install
 else
+  removetestfiles=$(hhvm --php -r "echo HHVM_VERSION_ID < 32800 ? 'yes' : 'no';")
+  if [ "$removetestfiles" = "ues" ]; then
+    rm -r tests
+  fi
   composer install
 fi
 
 hh_client
 
-vendor/bin/hacktest tests/
+runstests=$(hhvm --php -r "echo HHVM_VERSION_ID >= 32800 ? 'canruntests' : 'cannotruntests';")
+if [ "$runstests" = "canruntests" ]; then
+  vendor/bin/hacktest tests/
+fi

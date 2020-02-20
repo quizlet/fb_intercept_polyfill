@@ -2,35 +2,38 @@ sudo: required
 language: generic
 services: docker
 env:
+  - HHVM_VERSION=3.25.3
+  - HHVM_VERSION=3.26.3
+  - HHVM_VERSION=3.27-lts-latest
   - HHVM_VERSION=3.28.3
   - HHVM_VERSION=3.29.1
   - HHVM_VERSION=3.30-lts-latest
   - HHVM_VERSION=4.0-latest
-  - HHVM_VERSION=4.1-latest
-  - HHVM_VERSION=4.2-latest
-  - HHVM_VERSION=4.4-latest
-  - HHVM_VERSION=4.6-latest
-  - HHVM_VERSION=4.8-latest
-  - HHVM_VERSION=4.10-latest
-  - HHVM_VERSION=4.12-latest
-  - HHVM_VERSION=4.14-latest
-  - HHVM_VERSION=4.16-latest
-  - HHVM_VERSION=4.18-latest
-  - HHVM_VERSION=4.20-latest
-  - HHVM_VERSION=4.22-latest
-  - HHVM_VERSION=4.24-latest
-  - HHVM_VERSION=4.26-latest
-  - HHVM_VERSION=4.28-latest
-  - HHVM_VERSION=4.30-latest
-  - HHVM_VERSION=4.32-latest
-  - HHVM_VERSION=4.34-latest
-  - HHVM_VERSION=4.36-latest
-  - HHVM_VERSION=4.38-latest
-  - HHVM_VERSION=4.40-latest
-  - HHVM_VERSION=4.42-latest
-  - HHVM_VERSION=4.44-latest
-  - HHVM_VERSION=latest
-  - HHVM_VERSION=nightly
+  # - HHVM_VERSION=4.1-latest
+  # - HHVM_VERSION=4.2-latest
+  # - HHVM_VERSION=4.4-latest
+  # - HHVM_VERSION=4.6-latest
+  # - HHVM_VERSION=4.8-latest
+  # - HHVM_VERSION=4.10-latest
+  # - HHVM_VERSION=4.12-latest
+  # - HHVM_VERSION=4.14-latest
+  # - HHVM_VERSION=4.16-latest
+  # - HHVM_VERSION=4.18-latest
+  # - HHVM_VERSION=4.20-latest
+  # - HHVM_VERSION=4.22-latest
+  # - HHVM_VERSION=4.24-latest
+  # - HHVM_VERSION=4.26-latest
+  # - HHVM_VERSION=4.28-latest
+  # - HHVM_VERSION=4.30-latest
+  # - HHVM_VERSION=4.32-latest
+  # - HHVM_VERSION=4.34-latest
+  # - HHVM_VERSION=4.36-latest
+  # - HHVM_VERSION=4.38-latest
+  # - HHVM_VERSION=4.40-latest
+  # - HHVM_VERSION=4.42-latest
+  # - HHVM_VERSION=4.44-latest
+  # - HHVM_VERSION=latest
+  # - HHVM_VERSION=nightly
 
 install:
   - docker pull hhvm/hhvm:$HHVM_VERSION
