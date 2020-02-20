@@ -19,14 +19,8 @@ function fb_intercept_full(
     /*HH_IGNORE_ERROR[4107] no hhi*/
     return \fb_intercept(
       $name,
-      (
-        string $name,
-        mixed $obj_or_classname,
-        varray<mixed> $arguments,
-        mixed $data,
-        /*HH_IGNORE_ERROR[2087] Don't use references*/
-      bool &$done,
-      ) ==> {
+      /*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
+      (string $name, mixed $obj_or_classname, varray<mixed> $arguments, mixed $data, bool &$done) ==> {
         if (!\is_callable($handler)) {
           \trigger_error(
             'The given handler could not be called!',
@@ -59,14 +53,8 @@ function fb_intercept_four(
     /*HH_IGNORE_ERROR[4107] no hhi*/
     return \fb_intercept(
       $name,
-      (
-        string $name,
-        mixed $obj_or_classname,
-        varray<mixed> $arguments,
-        mixed $data,
-        /*HH_IGNORE_ERROR[2087] Don't use references*/
-      bool &$_done,
-      ) ==> {
+      /*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
+      (string $name, mixed $obj_or_classname, varray<mixed> $arguments, mixed $data, bool &$_done) ==> {
         if (!\is_callable($handler)) {
           \trigger_error(
             'The given handler could not be called!',
@@ -96,14 +84,8 @@ function fb_intercept_three(
     /*HH_IGNORE_ERROR[4107] no hhi*/
     return \fb_intercept(
       $name,
-      (
-        string $name,
-        mixed $obj_or_classname,
-        varray<mixed> $arguments,
-        mixed $_data,
-        /*HH_IGNORE_ERROR[2087] Don't use references*/
-      bool &$_done,
-      ) ==> {
+      /*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
+      (string $name, mixed $obj_or_classname, varray<mixed> $arguments, mixed $_data, bool &$_done) ==> {
         if (!\is_callable($handler)) {
           \trigger_error(
             'The given handler could not be called!',
@@ -133,14 +115,8 @@ function fb_intercept_two(
     /*HH_IGNORE_ERROR[4107] no hhi*/
     return \fb_intercept(
       $name,
-      (
-        string $name,
-        mixed $obj_or_classname,
-        varray<mixed> $_arguments,
-        mixed $_data,
-        /*HH_IGNORE_ERROR[2087] Don't use references*/
-      bool &$_done,
-      ) ==> {
+      /*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
+      (string $name, mixed $obj_or_classname, varray<mixed> $_arguments, mixed $_data, bool &$_done) ==> {
         if (!\is_callable($handler)) {
           \trigger_error(
             'The given handler could not be called!',
@@ -170,14 +146,8 @@ function fb_intercept_one(
     /*HH_IGNORE_ERROR[4107] no hhi*/
     return \fb_intercept(
       $name,
-      (
-        string $name,
-        mixed $_obj_or_classname,
-        varray<mixed> $_arguments,
-        mixed $_data,
-        /*HH_IGNORE_ERROR[2087] Don't use references*/
-      bool &$_done,
-      ) ==> {
+      /*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
+      (string $name, mixed $_obj_or_classname, varray<mixed> $_arguments, mixed $_data, bool &$_done) ==> {
         if (!\is_callable($handler)) {
           \trigger_error(
             'The given handler could not be called!',
@@ -207,14 +177,8 @@ function fb_intercept_zero(
     /*HH_IGNORE_ERROR[4107] no hhi*/
     return \fb_intercept(
       $name,
-      (
-        string $_name,
-        mixed $_obj_or_classname,
-        varray<mixed> $_arguments,
-        mixed $_data,
-        /*HH_IGNORE_ERROR[2087] Don't use references*/
-      bool &$_done,
-      ) ==> {
+      /*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
+      (string $_name, mixed $_obj_or_classname, varray<mixed> $_arguments, mixed $_data, bool &$_done) ==> {
         if (!\is_callable($handler)) {
           \trigger_error(
             'The given handler could not be called!',
