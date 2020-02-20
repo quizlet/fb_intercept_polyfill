@@ -19,7 +19,7 @@ function fb_intercept_full(
     /*HH_IGNORE_ERROR[4107] no hhi*/
     return \fb_intercept(
       $name,
-      /*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
+      /*HH_IGNORE_ERROR[1002] Don't use references*//*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
       function (string $name, mixed $obj_or_classname, varray<mixed> $arguments, mixed $data, bool &$done): mixed {
         if (!\is_callable($handler)) {
           \trigger_error(
@@ -53,7 +53,7 @@ function fb_intercept_four(
     /*HH_IGNORE_ERROR[4107] no hhi*/
     return \fb_intercept(
       $name,
-      /*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
+      /*HH_IGNORE_ERROR[1002] Don't use references*//*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
       function (string $name, mixed $obj_or_classname, varray<mixed> $arguments, mixed $data, bool &$_done): mixed {
         if (!\is_callable($handler)) {
           \trigger_error(
@@ -84,7 +84,7 @@ function fb_intercept_three(
     /*HH_IGNORE_ERROR[4107] no hhi*/
     return \fb_intercept(
       $name,
-      /*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
+      /*HH_IGNORE_ERROR[1002] Don't use references*//*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
       function (string $name, mixed $obj_or_classname, varray<mixed> $arguments, mixed $_data, bool &$_done): mixed {
         if (!\is_callable($handler)) {
           \trigger_error(
@@ -115,7 +115,7 @@ function fb_intercept_two(
     /*HH_IGNORE_ERROR[4107] no hhi*/
     return \fb_intercept(
       $name,
-      /*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
+      /*HH_IGNORE_ERROR[1002] Don't use references*//*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
       function (string $name, mixed $obj_or_classname, varray<mixed> $_arguments, mixed $_data, bool &$_done): mixed {
         if (!\is_callable($handler)) {
           \trigger_error(
@@ -146,7 +146,7 @@ function fb_intercept_one(
     /*HH_IGNORE_ERROR[4107] no hhi*/
     return \fb_intercept(
       $name,
-      /*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
+      /*HH_IGNORE_ERROR[1002] Don't use references*//*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
       function (string $name, mixed $_obj_or_classname, varray<mixed> $_arguments, mixed $_data, bool &$_done): mixed {
         if (!\is_callable($handler)) {
           \trigger_error(
@@ -177,7 +177,7 @@ function fb_intercept_zero(
     /*HH_IGNORE_ERROR[4107] no hhi*/
     return \fb_intercept(
       $name,
-      /*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
+      /*HH_IGNORE_ERROR[1002] Don't use references*//*HH_IGNORE_ERROR[2087] Don't use references*/ //hackfmt-ignore
       function (string $_name, mixed $_obj_or_classname, varray<mixed> $_arguments, mixed $_data, bool &$_done): mixed {
         if (!\is_callable($handler)) {
           \trigger_error(
