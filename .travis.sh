@@ -24,8 +24,11 @@ else
   removetestfiles=$(hhvm --php -r "echo HHVM_VERSION_ID < 32800 ? 'yes' : 'no';")
   if [ "$removetestfiles" = "yes" ]; then
     rm -r tests
+    # We can't install hacktest
+    composer install --no-dev
+  else
+    composer install
   fi
-  composer install
 fi
 
 hh_client
