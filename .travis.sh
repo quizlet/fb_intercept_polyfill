@@ -22,7 +22,7 @@ if [ "$runtime" = "hhvm" ]; then
   hhvm /usr/local/bin/composer install
 else
   removetestfiles=$(hhvm --php -r "echo HHVM_VERSION_ID < 32800 ? 'yes' : 'no';")
-  if [ "$removetestfiles" = "ues" ]; then
+  if [ "$removetestfiles" = "yes" ]; then
     rm -r tests
   fi
   composer install
