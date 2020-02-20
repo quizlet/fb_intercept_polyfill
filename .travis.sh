@@ -19,16 +19,16 @@ fi
 
 runtime=$(hhvm --php -r "echo HHVM_VERSION_ID >= 40000 ? 'php' : 'hhvm';")
 if [ "$runtime" = "hhvm" ]; then
-  hhvm /usr/local/bin/composer install
-else
   removetestfiles=$(hhvm --php -r "echo HHVM_VERSION_ID < 32800 ? 'yes' : 'no';")
   if [ "$removetestfiles" = "yes" ]; then
     rm -r tests
     # We can't install hacktest
-    composer install --no-dev
+    hhvm /usr/local/bin/composer install --no-dev
   else
-    composer install
+    hhvm /usr/local/bin/composer install
   fi
+else
+    composer install
 fi
 
 hh_client
