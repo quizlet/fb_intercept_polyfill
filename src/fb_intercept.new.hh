@@ -1,6 +1,6 @@
 <?hh // strict
 
-namespace Lexidor\FBInterceptPolyfill;
+namespace Quizlet\FBInterceptPolyfill;
 
 use type HH\Lib\Ref;
 

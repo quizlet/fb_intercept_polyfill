@@ -1,6 +1,6 @@
 <?hh // strict
 
-namespace Lexidor\FBInterceptPolyfill\TestSubjects;
+namespace Quizlet\FBInterceptPolyfill\TestSubjects;
 
 final class GlobalState {
   public static ?string $last_called_function;

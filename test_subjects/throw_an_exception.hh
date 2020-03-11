@@ -1,6 +1,6 @@
 <?hh // strict
 
-namespace Lexidor\FBInterceptPolyfill\TestSubjects;
+namespace Quizlet\FBInterceptPolyfill\TestSubjects;
 
 function throw_an_exception(): noreturn {
   GlobalState::$last_called_function = __FUNCTION__;
