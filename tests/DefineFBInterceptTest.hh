@@ -1,32 +1,32 @@
 <?hh // strict
 
-namespace Lexidor\FBInterceptPolyfill\Tests;
+namespace Quizlet\FBInterceptPolyfill\Tests;
 
 use type HH\Lib\Ref;
 use namespace HH\Lib\{C, Str};
 use type Facebook\HackTest\{DataProvider, HackTest};
 use function Facebook\FBExpect\expect;
-use namespace Lexidor\FBInterceptPolyfill\TestSubjects;
-use type Lexidor\FBInterceptPolyfill\TestSubjects\GlobalState;
-use namespace Lexidor\FBInterceptPolyfill\_Private;
-use namespace Lexidor\FBInterceptPolyfill;
+use namespace Quizlet\FBInterceptPolyfill\TestSubjects;
+use type Quizlet\FBInterceptPolyfill\TestSubjects\GlobalState;
+use namespace Quizlet\FBInterceptPolyfill\_Private;
+use namespace Quizlet\FBInterceptPolyfill;
 
 class DefineFBInterceptTest extends HackTest {
   #region fully-qualified function names
 
   const string PLAIN_FUNCTION =
-    'Lexidor\FBInterceptPolyfill\TestSubjects\plain_function';
-  const string GET_42 = 'Lexidor\FBInterceptPolyfill\TestSubjects\get_42';
+    'Quizlet\FBInterceptPolyfill\TestSubjects\plain_function';
+  const string GET_42 = 'Quizlet\FBInterceptPolyfill\TestSubjects\get_42';
   const string THROW_AN_EXCEPTION =
-    'Lexidor\FBInterceptPolyfill\TestSubjects\throw_an_exception';
+    'Quizlet\FBInterceptPolyfill\TestSubjects\throw_an_exception';
   const string TAKES_THREE_ARGUMENTS =
-    'Lexidor\FBInterceptPolyfill\TestSubjects\takes_three_arguments';
+    'Quizlet\FBInterceptPolyfill\TestSubjects\takes_three_arguments';
   const string VARIADIC_FUNCTION =
-    'Lexidor\FBInterceptPolyfill\TestSubjects\variadic_function';
+    'Quizlet\FBInterceptPolyfill\TestSubjects\variadic_function';
   const string GET_42_STATIC =
-    'Lexidor\FBInterceptPolyfill\TestSubjects\SomeClass::get42Static';
+    'Quizlet\FBInterceptPolyfill\TestSubjects\SomeClass::get42Static';
   const string GET_42_NON_STATIC =
-    'Lexidor\FBInterceptPolyfill\TestSubjects\SomeClass::get42NonStatic';
+    'Quizlet\FBInterceptPolyfill\TestSubjects\SomeClass::get42NonStatic';
 
   const keyset<string> ALL_FUNCTIONS = keyset[
     self::PLAIN_FUNCTION,

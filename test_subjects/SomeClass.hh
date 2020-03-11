@@ -1,6 +1,6 @@
 <?hh // strict
 
-namespace Lexidor\FBInterceptPolyfill\TestSubjects;
+namespace Quizlet\FBInterceptPolyfill\TestSubjects;
 
 final class SomeClass {
   public static function get42Static(): int {
