@@ -1,6 +1,8 @@
 {
   "roots": [
-    "src/",
+    "src/"
+  ],
+  "devRoots": [
     "test_subjects",
     "tests/"
   ],
