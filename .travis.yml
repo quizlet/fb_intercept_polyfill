@@ -6,10 +6,6 @@ env:
   - HHVM_VERSION=3.30-lts-latest
   - HHVM_VERSION=4.0-latest
   - HHVM_VERSION=4.24-latest
-  - HHVM_VERSION=4.26-latest
-  - HHVM_VERSION=4.28-latest
-  - HHVM_VERSION=latest
-  - HHVM_VERSION=nightly
 
 install:
   - docker pull hhvm/hhvm:$HHVM_VERSION
