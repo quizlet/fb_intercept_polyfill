@@ -4,6 +4,8 @@ services: docker
 env:
   - HHVM_VERSION=4.26-latest
   - HHVM_VERSION=4.28-latest
+  - HHVM_VERSION=4.29-latest
+  - HHVM_VERSION=4.30-latest
   - HHVM_VERSION=latest
   - HHVM_VERSION=nightly
 
