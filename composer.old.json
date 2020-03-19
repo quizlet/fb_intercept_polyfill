@@ -1,9 +1,0 @@
-{
-    "name": "quizlet/fb_intercept_polyfill",
-    "description": "A polyfill for using fb_intercept across hhvm 3.24 -> 4.present",
-    "require": {
-        "hhvm": ">=3.24",
-        "hhvm/hhvm-autoload": "^1|^2|^3",
-        "hhvm/hsl": ">1.4 <5"
-    }
-}
