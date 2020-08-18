@@ -1,2 +1,3 @@
 tests/ export-ignore
+test_subjects/ export-ignore
 .hhconfig export-ignore
