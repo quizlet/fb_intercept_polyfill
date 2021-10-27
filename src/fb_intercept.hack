@@ -1,5 +1,3 @@
-<?hh // strict
-
 namespace Quizlet\FBInterceptPolyfill;
 
 use type HH\Lib\Ref;
